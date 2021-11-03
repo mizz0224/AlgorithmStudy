@@ -1,41 +1,27 @@
-# def check(arr, n):
-#     if n in arr:
-#         print(0)
-#         return
-#     else:
-#         arr.append(n)
-#     arr2 = list()
-#     arr.sort()
-#     a = arr[arr.index(n) - 1]
-#     b = arr[arr.index(n) + 1]
-#     for i in range(a + 1, b):
-#         for j in range(i + 1, b):
-#             arr3 = list()
-#             arr3.append(i)
-#             arr3.append(j)
-#             arr2.append(arr3)
-#     count = 0
-#     for a in arr2:
-#         if a[0] <= n and a[1] >= n:
-#             count += 1
-#     print(count)
+def check(arr, n):
+    if n in arr:
+        print(0)
+        return
+    else:
+        arr.append(n)
+    arr2 = list()
+    arr.sort()
+    a = arr[arr.index(n) - 1]
+    b = arr[arr.index(n) + 1]
+    for i in range(a + 1, b):
+        for j in range(i + 1, b):
+            arr3 = list()
+            arr3.append(i)
+            arr3.append(j)
+            arr2.append(arr3)
+    count = 0
+    for a in arr2:
+        if a[0] <= n and a[1] >= n:
+            count += 1
+    print(count)
 
 
-# l_size = int(input())
-# arr = list(map(int, input().split()))
-# n = int(input())
-# check(arr, n)
 l_size = int(input())
-arr = sorted(list(map(int, input().split())))
+arr = list(map(int, input().split()))
 n = int(input())
-start = 0
-if n in arr:
-    print(0)
-else:
-    for i in arr:
-        if n > i:
-            start = i + 1  # 가능한 첫 숫자
-        else:
-            end = i - 1  # 가능한 끝 숫자
-            break
-    print(end - start + (end - n) * (n - start))
+check(arr, n)

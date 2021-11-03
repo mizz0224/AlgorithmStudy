@@ -1,0 +1,7 @@
+hour, minute = map(int, input().split())
+if minute < 45:
+    if hour == 0:
+        hour = 24
+    hour -= 1
+    minute += 60
+print(hour, minute - 45)
