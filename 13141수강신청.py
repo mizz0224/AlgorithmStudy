@@ -2,6 +2,7 @@ import sys
 
 cut, student = map(int, sys.stdin.readline().split())
 arr = dict()
+arr.val
 order = 0
 for _ in range(student):
     student_num = sys.stdin.readline().rstrip()
