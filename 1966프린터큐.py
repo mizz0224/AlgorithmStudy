@@ -5,27 +5,28 @@ for _ in range(print_count):
     arr = list(map(int, input().split()))
     arr_dic = dict()
     count = 0
-    while True:
-        print(arr)
-        count += 1
-        if len(arr) == 1:
-            break
-        big = False
-        for i in range(1, len(arr)):
-            if arr[i] > arr[0]:
-                big = True
-        if big:
-            arr.append(arr.pop(0))
-            if m == 0:
-                m = len(arr) - 1
+    if len(arr) == 1:
+        pass
+    else:
+        while True:
+            big = False
+            for i in range(1, len(arr)):
+                if arr[i] > arr[0]:
+                    big = True
+            if m == 0 and big == False:
+                break
+            if big:
+                arr.append(arr.pop(0))
+                if m == 0:
+                    m = len(arr) - 1
+                else:
+                    m -= 1
             else:
+                arr.pop(0)
+                count += 1
                 m -= 1
-        else:
-            arr.pop(0)
-            m -= 1
-        if m == 0:
-            break
-    count_arr.append(count)
+
+    count_arr.append(count + 1)
 
 for i in count_arr:
     print(i)
