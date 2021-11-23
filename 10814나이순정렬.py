@@ -1,6 +1,6 @@
 import sys
 
-arr = list()
+arr = dict()
 count_num = int(sys.stdin.readline())
 
 for _ in range(count_num):
@@ -8,26 +8,11 @@ for _ in range(count_num):
     age = int(line[0])
     name = line[1]
     line = [age, name]
-    if len(arr) == 0:
-        arr.append(line)
-    elif len(arr) == 1:
-        if arr[0][0] > age:
-            arr.insert(0, line)
-        else:
-            arr.insert(1, line)
+    if age in arr.keys():
+        arr[age] = arr[age] + [name]
     else:
-        index = -1
-        while arr[index] != arr[0]:
-            if arr[index][0] < age:
-                arr.insert(arr.index(arr[index]) + 1, line)
-                break
-            else:
-                index -= 1
-        if arr[index] == arr[0]:
-            if arr[0][0] > age:
-                arr.insert(0, line)
-            else:
-                arr.insert(1, line)
-for p in arr:
-    s = str(p[0]) + " " + str(p[1])
-    print(s)
+        arr[age] = [name]
+
+for key, value in sorted(arr.items()):
+    for v in value:
+        print(str(key) + " " + str(v))
