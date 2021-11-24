@@ -1,10 +1,14 @@
 import sys
 
 count = int(sys.stdin.readline())
-arr = list()
+arr = dict()
 for _ in range(count):
-    arr.append(int(sys.stdin.readline()))
+    num = int(sys.stdin.readline())
+    if num in arr.keys():
+        arr[num] += 1
+    else:
+        arr[num] = 1
 
-arr.sort()
-for i in arr:
-    print(i)
+for key, value in sorted(arr.items()):
+    for _ in range(value):
+        print(key)
